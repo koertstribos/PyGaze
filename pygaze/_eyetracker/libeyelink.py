@@ -175,6 +175,7 @@ class libeyelink(BaseEyeTracker):
             self.eyelink_model = 'EyeLink (model unknown)'
         # Open graphics
         self.eyelink_graphics = EyelinkGraphics(self, _eyelink)
+        pylink.closeGraphics()
         pylink.openGraphicsEx(self.eyelink_graphics)
         # Optionally force drift correction. For some reason this must be done
         # as (one of) the first things, otherwise a segmentation fault occurs.
