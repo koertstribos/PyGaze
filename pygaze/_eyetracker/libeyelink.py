@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+#This file is a modified version of the original libeyelink.py file from the PyGaze package.
+#the modification is an additional line 'pylink.closeGraphics()' in ln 183
+#this modification was necessary to ensure that multiple experiments could be launched in succession#
 #
+# -- original preamble -- 
 # This file is part of PyGaze - the open-source toolbox for eye tracking
 #
 # PyGaze is a Python module for easily creating gaze contingent experiments
@@ -175,6 +179,7 @@ class libeyelink(BaseEyeTracker):
             self.eyelink_model = 'EyeLink (model unknown)'
         # Open graphics
         self.eyelink_graphics = EyelinkGraphics(self, _eyelink)
+        pylink.closeGraphics()
         pylink.openGraphicsEx(self.eyelink_graphics)
         # Optionally force drift correction. For some reason this must be done
         # as (one of) the first things, otherwise a segmentation fault occurs.
